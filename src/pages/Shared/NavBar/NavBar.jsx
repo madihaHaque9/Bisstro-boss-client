@@ -28,15 +28,14 @@ const NavBar = () => {
 
     </Link></li>
     {
-          user? <>
-         {/* <span>{user?.displayName}</span> */}
-          <button onClick={handleLogOut} className="btn btn-ghost">Log Out</button>
-</>:<>
-             <li><Link to='/login'>Login</Link></li></>
-        }
-    </>
+      user ?<>
+      <button onClick={handleLogOut} className="btn btn-primary">Log Out</button>
+      </>:<>
+      <li><Link to='/login'>Login</Link></li>
+      </>
+    }
  
-       
+     </>  
     
     return (
         <div className="navbar  max-w-screen-xl mx-auto fixed z-10 opacity-40 bg-black text-white">
