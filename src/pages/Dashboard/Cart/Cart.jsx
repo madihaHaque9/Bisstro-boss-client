@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
+import { IoIosTrash } from "react-icons/io";
 
 
 const Cart = () => {
