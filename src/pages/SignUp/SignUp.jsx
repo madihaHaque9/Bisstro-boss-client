@@ -5,9 +5,11 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const SignUp = () => {
+  const axiosPublic=useAxiosPublic();
     const {
         register,
         handleSubmit,reset,
@@ -22,16 +24,28 @@ const SignUp = () => {
             console.log(loggedUser);
             updateUserProfile(data.name,data.photoURL)
             .then(()=>{
+              const userInfo={
+                name:data.name,
+                email:data.email
+
+              }
+              axiosPublic.post('/users',userInfo)
+              .then(res=>{
+                if(res.data.insertedId){
+                  reset();
+                  Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "User created Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                        navigate('/');
+
+                }
+              })
               console.log("User profile info updated")
-              reset();
-              Swal.fire({
-                position: "top-center",
-                icon: "success",
-                title: "User created Successfully",
-                showConfirmButton: false,
-                timer: 1500
-              });
-                    navigate('/');
+    
             })
             .catch(error=>console.log(error))
         })
