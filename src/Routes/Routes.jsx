@@ -13,6 +13,7 @@ import Cart from "../pages/Dashboard/Cart/Cart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddItems from "../pages/Dashboard/AddItems/AddItems";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
+import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem";
  export  const router = createBrowserRouter([
     {
       path: "/",
@@ -54,6 +55,9 @@ import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
         },{
           path:'manageItems',
           element:<ManageItems></ManageItems>
+        },{
+          path:"updateItem/:id",
+          element:<UpdateItem></UpdateItem>
         },
         {
           path:'users',
